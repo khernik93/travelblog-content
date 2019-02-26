@@ -3,8 +3,8 @@ services:
 
   # Content server
   frontend:
-    image: content-server
-    container_name: content-server
+    image: travelblog-content
+    container_name: travelblog-content
     build:
       context: .
       dockerfile: Dockerfile
