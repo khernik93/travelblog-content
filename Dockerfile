@@ -1,5 +1,8 @@
 FROM node:10-alpine
 
+RUN apk update && apk add bash
+RUN apk update && apk add vim
+
 WORKDIR /home/content
 COPY . /home/content
 RUN chown -R node:node /home/content
