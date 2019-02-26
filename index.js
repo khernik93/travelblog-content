@@ -23,20 +23,12 @@ const storage = multer.diskStorage({
 });
 
 /**
- * Checking the API key
- */
-app.use(function(req, res, next) {
-  const apiKey = req.headers[Config.apiKeyHeader];
-  if (apiKey !== Config.apiKey) {
-    return res.status(401).json({ error: 'Wrong api key!' });
-  }
-  next();
-});
-
-/**
  * Uploading new resource endpoint
  */
 app.post('/upload', function (req, res) {
+  if (! _isApiKeyHeaderValid(req)) {
+    return res.status(401).json({ error: 'Wrong api key!' });
+  }
   const upload = multer({storage}).single('file');
   upload(req, res, function (err) {
     if (err) {
@@ -52,6 +44,14 @@ app.post('/upload', function (req, res) {
 const _getResourceBaseUrl = () => (
   req.protocol + '://' + req.get('host') + '/resources/'
 );
+
+/**
+ * Checking API key validity
+ */
+const _isApiKeyHeaderValid = () => {
+  const apiKey = req.headers[Config.apiKeyHeader];
+  return (apiKey === Config.apiKey);
+};
 
 app.listen(3002, () => {
   console.log(`Content server listening on port 3002`);
