@@ -1,0 +1,15 @@
+const Config = {
+
+  /**
+   * Name of the header holding the API key
+   */
+  apiKeyHeader: "",
+
+  /**
+   * API key
+   */
+  apiKey: ""
+
+};
+
+module.exports = Config;

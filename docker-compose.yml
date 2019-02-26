@@ -1,0 +1,23 @@
+version: '3'
+services:
+
+  # Content server
+  frontend:
+    image: content-server
+    container_name: content-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    logging:
+      driver: json-file
+    networks:
+      app-network:
+        aliases:
+          - content
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
