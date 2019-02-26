@@ -8,7 +8,7 @@ const app = express();
 /**
  * Expose static files
  */
-app.use(express.static('resources'));
+app.use('/resources', express.static('resources'));
 
 /**
  * File upload config
@@ -25,8 +25,8 @@ const storage = multer.diskStorage({
 /**
  * Uploading new resource endpoint
  */
-app.post('/upload', function (req, res) {
-  if (! _isApiKeyHeaderValid(req)) {
+app.post('/resources/upload', function (req, res) {
+  if (! _isApiKeyHeaderValid(req.headers)) {
     return res.status(401).json({ error: 'Wrong api key!' });
   }
   const upload = multer({storage}).single('file');
@@ -36,20 +36,20 @@ app.post('/upload', function (req, res) {
       res.status(500).send('Internal server error');
       return false;
     }
-    const url = _getResourceBaseUrl() + req.file.filename;
+    const url = _getResourceBaseUrl(req) + req.file.filename;
     res.status(200).send(url);
   });
 });
 
-const _getResourceBaseUrl = () => (
+const _getResourceBaseUrl = (req) => (
   req.protocol + '://' + req.get('host') + '/resources/'
 );
 
 /**
  * Checking API key validity
  */
-const _isApiKeyHeaderValid = () => {
-  const apiKey = req.headers[Config.apiKeyHeader];
+const _isApiKeyHeaderValid = (headers) => {
+  const apiKey = headers[Config.apiKeyHeader];
   return (apiKey === Config.apiKey);
 };
 
