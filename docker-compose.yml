@@ -13,11 +13,11 @@ services:
     logging:
       driver: json-file
     networks:
-      app-network:
+      travelblogback_app-network:
         aliases:
           - content
 
 #Docker Networks
 networks:
-  app-network:
-    driver: bridge
+  travelblogback_app-network:
+    external: true
