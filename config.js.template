@@ -1,14 +1,24 @@
 const Config = {
 
   /**
+   * Key of the form field of the uploading file
+   */
+  fileFormFieldKey: "",
+
+  /**
    * Name of the header holding the API key
    */
   apiKeyHeader: "",
-
+  
   /**
    * API key
    */
-  apiKey: ""
+  apiKey: "",
+
+  /**
+   * Max upload size
+   */
+  maxUploadSize: 0
 
 };
 
