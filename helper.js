@@ -4,7 +4,7 @@ const Config = require('./config');
 
 const UPLOAD_SETTINGS = {
   storage: multer.diskStorage({ 
-    destination: (req, file, cb) => cb(null, 'resources'),
+    destination: (req, file, cb) => cb(null, Config.resourceLocation),
     filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
   }),
   limits: {
