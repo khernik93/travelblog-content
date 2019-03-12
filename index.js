@@ -1,12 +1,13 @@
 const express = require('express');
 const Helper = require('./helper');
+const Config = require('./config');
 
 const app = express();
 
 /**
  * Expose static resources
  */
-app.use('/resources', express.static('resources'));
+app.use(Config.resourceLocation, express.static('resources'));
 
 /**
  * Upload resource endpoint

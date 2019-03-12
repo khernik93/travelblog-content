@@ -12,6 +12,8 @@ services:
       - "3002:3002"
     logging:
       driver: json-file
+    volumes:
+      - resources:/var/lib/resources
     networks:
       travelblogback_app-network:
         aliases:
@@ -21,3 +23,8 @@ services:
 networks:
   travelblogback_app-network:
     external: true
+
+# Volumes
+volumes:
+  resources:
+    driver: local

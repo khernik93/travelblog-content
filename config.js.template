@@ -16,6 +16,11 @@ const Config = {
   apiKey: "",
 
   /**
+   * Location of the resources folder
+   */
+  resourceLocation: "",
+
+  /**
    * Max upload size
    */
   maxUploadSize: 0
