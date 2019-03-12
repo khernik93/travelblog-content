@@ -7,7 +7,7 @@ const app = express();
 /**
  * Expose static resources
  */
-app.use(Config.resourceLocation, express.static('resources'));
+app.use('/resources', express.static(Config.resourceLocation));
 
 /**
  * Upload resource endpoint
