@@ -5,6 +5,7 @@ services:
   content:
     image: travelblog-content
     container_name: travelblog-content
+    user: root
     build:
       context: .
       dockerfile: Dockerfile
