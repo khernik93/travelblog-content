@@ -2,7 +2,7 @@ version: '3'
 services:
 
   # Content server
-  frontend:
+  content:
     image: travelblog-content
     container_name: travelblog-content
     build:
