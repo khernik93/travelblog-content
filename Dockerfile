@@ -6,6 +6,7 @@ RUN apk update && apk add vim
 WORKDIR /home/content
 COPY . /home/content
 RUN chown -R node:node /home/content
+RUN mkdir -p /var/lib/resources ; chown -R node:node /var/lib/resources
 USER node
 COPY package*.json /tmp/
 
