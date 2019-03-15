@@ -16,7 +16,7 @@ const Config = {
   apiKey: "",
 
   /**
-   * Location of the resources folder
+   * Location of the resources folder (absolute path with slash at the end)
    */
   resourceLocation: "",
 
